@@ -1,0 +1,20 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model PhoneForSale {
+  id          String   @id @default(cuid())
+  title       String
+  brand       String
+  price       Float
+  condition   String   // "Como nuevo", "Excelente", "Detalle estético"
+  description String
+  imageUrl    String?
+  available   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
